@@ -1,0 +1,72 @@
+aid: pn-bank
+url: https://raw.githubusercontent.com/api-evangelist/pn-bank/refs/heads/main/apis.yml
+name: P&N Bank
+kind: company
+description: P&N Bank is the retail banking brand of Police & Nurses Limited (ABN
+  69 087 651 876, AFSL/Australian Credit Licence 240701), a customer-owned (mutual)
+  bank owned by its members rather than shareholders and one of Western Australia's
+  largest locally based banks, headquartered in Perth. It grew out of the Police &
+  Nurses Credit Society and today sits within the broader P&N Group, which also operates
+  the bcu brand on the New South Wales / Queensland east coast, offering everyday
+  transaction and savings accounts, term deposits, home and personal loans, credit
+  cards, and insurance. As an Authorised Deposit-taking Institution (ADI) it participates
+  in Australia's Consumer Data Right (CDR / Open Banking), exposing a public, unauthenticated
+  Product Reference Data (PRD) API built to the Data Standards Body (DSB) Consumer
+  Data Standards; consumer data sharing beyond product reference data requires accredited
+  data recipient status and the CDR OAuth2/OIDC FAPI authorization model.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Financial
+- Banks
+- Open Banking
+- CDR
+- Consumer Banking
+- Australia
+- Customer Owned
+- Product Reference Data
+created: '2026-07-20'
+modified: '2026-07-20'
+specificationVersion: '0.19'
+apis:
+- aid: pn-bank:pn-bank-cdr-product-reference-data-api
+  name: P&N Bank CDR Product Reference Data API
+  tags:
+  - CDR
+  - Open Banking
+  - Product Reference Data
+  - Banking
+  - Australia
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.pnbank.com.au/help-and-support/open-banking/pn-bank-products-api/
+  baseURL: https://public.cdr-api.pnbank.com.au/cds-au/v1/banking/products
+  properties:
+  - url: https://www.pnbank.com.au/help-and-support/open-banking/pn-bank-products-api/
+    type: Documentation
+  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+    type: APIReference
+  - url: openapi/pn-bank-cds-banking-products-openapi.yml
+    type: OpenAPI
+  description: Public, unauthenticated Consumer Data Right (CDR) Product Reference
+    Data API exposing P&N Bank's banking product catalogue. GET /banking/products
+    returns a paginated list of products and GET /banking/products/{productId} returns
+    full product detail (rates, fees, features, eligibility, constraints). Confirmed
+    live on 2026-07-20 returning HTTP 200 with a data.products array and an x-v response
+    header of 5 (meta.totalRecords 68 products at time of review). Built to the DSB
+    Consumer Data Standards; no API key or authorization is required for product reference
+    data.
+common:
+- type: Website
+  url: https://www.pnbank.com.au/
+- type: Documentation
+  url: https://www.pnbank.com.au/help-and-support/open-banking/
+- type: PrivacyPolicy
+  url: https://www.pnbank.com.au/important-information/privacy/
+- type: TermsOfService
+  url: https://www.pnbank.com.au/important-information/terms-and-conditions/
+- type: Support
+  url: https://www.pnbank.com.au/contact/
+- type: LinkedIn
+  url: https://www.linkedin.com/company/p&n-bank
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
