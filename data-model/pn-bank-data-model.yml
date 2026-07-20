@@ -1,0 +1,65 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/pn-bank-cds-banking-products-openapi.yml
+docs: https://consumerdatastandardsaustralia.github.io/standards/#product-reference-data-apis
+root_entity: BankingProduct
+id_field: productId
+entities:
+- name: BankingProduct
+  schema: BankingProductV6
+  summary: A banking product in P&N Bank's public catalogue (list view).
+  key_fields: [productId, effectiveFrom, effectiveTo, lastUpdated, productCategory,
+    name, description, brand, brandName, isTailored, additionalInformation, cardArt]
+- name: BankingProductDetail
+  schema: BankingProductDetailV7
+  summary: Full product detail (BankingProductV6 plus the nested arrays below).
+  relationships:
+  - has_many: BankingProductBundle
+    via: bundles
+  - has_many: BankingProductFeatureV4
+    via: features
+  - has_many: BankingProductConstraintV3
+    via: constraints
+  - has_many: BankingProductEligibilityV2
+    via: eligibility
+  - has_many: BankingProductFeeV2
+    via: fees
+  - has_many: BankingProductDepositRateV2
+    via: depositRates
+  - has_many: BankingProductLendingRateV3
+    via: lendingRates
+- name: BankingProductFee
+  schema: BankingProductFeeV2
+  relationships:
+  - has_many: BankingProductDiscountV2
+    via: discounts
+- name: BankingProductDiscount
+  schema: BankingProductDiscountV2
+  relationships:
+  - has_many: BankingProductDiscountEligibility
+    via: eligibility
+- name: BankingProductDepositRate
+  schema: BankingProductDepositRateV2
+  relationships:
+  - has_many: BankingProductRateTierV4
+    via: tiers
+- name: BankingProductLendingRate
+  schema: BankingProductLendingRateV3
+  relationships:
+  - has_many: BankingProductRateTierV4
+    via: tiers
+- name: BankingProductRateTier
+  schema: BankingProductRateTierV4
+  relationships:
+  - has_one: BankingProductRateConditionV2
+    via: applicabilityConditions
+- name: BankingProductBundle
+  schema: BankingProductBundle
+  summary: Bundle grouping; references other products by productId list.
+  relationships:
+  - references: BankingProduct
+    via: productIds
+notes: >-
+  Product Reference Data is a single-aggregate model rooted at BankingProduct; the
+  detail view composes fees, rates (with tiers/conditions), features, constraints,
+  eligibility, and bundles. Bundles cross-reference sibling products by productId.

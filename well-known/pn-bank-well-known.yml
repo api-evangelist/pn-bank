@@ -1,0 +1,35 @@
+generated: '2026-07-20'
+method: searched
+source: live probe of /.well-known/ on both hosts (2026-07-20)
+hosts:
+- host: https://www.pnbank.com.au
+  documents:
+  - path: /.well-known/security.txt          # RFC 9116
+    status: 200
+    file: pn-bank-security.txt
+  - path: /.well-known/openid-configuration   # OIDC discovery
+    status: 404
+  - path: /.well-known/oauth-authorization-server  # RFC 8414
+    status: 404
+  - path: /.well-known/api-catalog            # RFC 9727
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://public.cdr-api.pnbank.com.au
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+notes: >-
+  Only the corporate host publishes a security.txt (one file covers both P&N Group
+  brands, pnbank.com.au and bcu.com.au). The public CDR Product Reference Data host
+  exposes no /.well-known/ discovery documents. CDR OIDC/OAuth discovery lives on
+  the data holder's authorization server, which is only reachable by accredited data
+  recipients and is not part of the public PRD surface.

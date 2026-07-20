@@ -1,0 +1,46 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/pn-bank-cds-banking-products-openapi.yml
+docs: https://consumerdatastandardsaustralia.github.io/standards/
+standards:
+- id: cdr-consumer-data-standards
+  conforms: true
+  evidence: >-
+    Built to the Data Standards Body (DSB) Consumer Data Standards (CDR Banking API,
+    spec version 1.36.0). Implements /banking/products and /banking/products/{productId}
+    with the mandated x-v / x-min-v version negotiation headers, CDS pagination
+    (page/page-size + meta.totalRecords/totalPages + first/prev/next/last links),
+    and the ResponseErrorListV2 error envelope.
+- id: cdr-product-reference-data
+  conforms: true
+  evidence: >-
+    Public, unauthenticated Product Reference Data (PRD) endpoints confirmed live
+    2026-07-20 (HTTP 200, x-v:5, meta.totalRecords 68 products).
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Uses the CDR ResponseErrorListV2 envelope, not application/problem+json.
+- id: oauth2
+  conforms: false
+  evidence: >-
+    PRD endpoints require no authorization. OAuth2 applies only to authenticated CDR
+    data sharing (accounts/transactions/payees etc.), which is not part of P&N Bank's
+    public surface and is not declared in this spec (no securitySchemes).
+- id: oidc-fapi
+  conforms: partial
+  evidence: >-
+    As an Authorised Deposit-taking Institution and CDR data holder, P&N Bank
+    participates in the CDR OAuth2/OIDC FAPI authorization model for consumer data
+    sharing beyond PRD; that surface is reachable only by accredited data recipients
+    and is not exposed here.
+- id: cdr-header-versioning
+  conforms: true
+  evidence: Every operation requires the x-v request header and supports optional x-min-v.
+- id: pagination
+  conforms: true
+  evidence: page/page-size query params with LinksPaginated + MetaPaginated response objects.
+compliance_program:
+  published: false
+  note: >-
+    P&N Bank is APRA-regulated as an ADI (ABN 69 087 651 876, AFSL/ACL 240701) and
+    subject to the CDR regime, but publishes no standalone security-compliance
+    program (SOC 2 / ISO 27001 / PCI report). No Compliance pointer is emitted.

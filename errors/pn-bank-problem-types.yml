@@ -1,0 +1,55 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/pn-bank-cds-banking-products-openapi.yml
+docs: https://consumerdatastandardsaustralia.github.io/standards/#error-codes
+format: cds-au
+envelope:
+  schema: ResponseErrorListV2
+  shape: '{ "errors": [ { "code": "<urn>", "title": "...", "detail": "...", "meta": {...} } ] }'
+  note: >-
+    P&N Bank's Product Reference Data API returns the Consumer Data Standards (CDR)
+    error envelope, not RFC 9457 problem+json. Errors are an array of ErrorV2 objects
+    (code/title/detail/meta). Error codes are the DSB standard high-level URNs
+    (urn:au-cds:error:cds-all:*); a data holder MAY extend with respondent-specific
+    codes carried via the meta.urn field.
+problems:
+- status: 400
+  code: urn:au-cds:error:cds-all:Field/Invalid
+  title: Invalid Field
+  source_operations: [listBankingProducts, getBankingProductDetail]
+- status: 400
+  code: urn:au-cds:error:cds-all:Field/Missing
+  title: Missing Required Field
+  source_operations: [listBankingProducts, getBankingProductDetail]
+- status: 400
+  code: urn:au-cds:error:cds-all:Header/Missing
+  title: Missing Required Header
+  source_operations: [listBankingProducts, getBankingProductDetail]
+- status: 400
+  code: urn:au-cds:error:cds-all:Version/Invalid
+  title: Invalid Version
+  source_operations: [listBankingProducts, getBankingProductDetail]
+- status: 400
+  code: urn:au-cds:error:cds-all:Date/Invalid
+  title: Invalid Date
+  source_operations: [listBankingProducts, getBankingProductDetail]
+- status: 400
+  code: urn:au-cds:error:cds-all:Pagination/InvalidPageSize
+  title: Invalid Page Size
+  source_operations: [listBankingProducts]
+- status: 404
+  code: urn:au-cds:error:cds-all:Resource/Invalid
+  title: Invalid Resource
+  source_operations: [getBankingProductDetail]
+- status: 404
+  code: urn:au-cds:error:cds-all:Resource/Unavailable
+  title: Unavailable Resource
+  source_operations: [getBankingProductDetail]
+- status: 406
+  code: urn:au-cds:error:cds-all:Version/Unsupported
+  title: Unsupported Version
+  source_operations: [listBankingProducts, getBankingProductDetail]
+- status: 422
+  code: urn:au-cds:error:cds-all:Pagination/InvalidPage
+  title: Invalid Page
+  source_operations: [listBankingProducts]

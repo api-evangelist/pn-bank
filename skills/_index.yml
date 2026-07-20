@@ -1,0 +1,7 @@
+generated: '2026-07-20'
+method: generated
+skills:
+- file: pn-bank-get-products.md
+  name: Look up P&N Bank banking products
+  api: openapi/pn-bank-cds-banking-products-openapi.yml
+  operations: [listBankingProducts, getBankingProductDetail]

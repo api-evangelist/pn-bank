@@ -1,0 +1,27 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/pn-bank-cds-banking-products-openapi.yml
+docs: https://consumerdatastandardsaustralia.github.io/standards/
+versioning:
+  scheme: header
+  mechanism: >-
+    CDR endpoint versioning via the mandatory x-v request header (requested version)
+    and optional x-min-v (minimum acceptable version); the server echoes the served
+    version in the x-v response header. Confirmed x-v:5 for /banking/products on
+    2026-07-20.
+  spec_version: 1.36.0
+  docs: https://consumerdatastandardsaustralia.github.io/standards/#versioning
+deprecation:
+  policy_url: https://consumerdatastandardsaustralia.github.io/standards/#deprecation
+  note: >-
+    Endpoint version lifecycle (deprecation and obsolescence of x-v versions) is
+    governed centrally by the DSB Consumer Data Standards, not by a P&N Bank-specific
+    policy. P&N Bank does not publish its own deprecation policy page.
+  sunset_header: false
+status_page: null
+status_note: >-
+  No dedicated CDR API status/uptime page found. P&N Bank publishes a general
+  customer alerts/outages page at
+  https://www.pnbank.com.au/help-and-support/alerts-and-information/ (not an API
+  status page; no StatusPage pointer emitted).
+deprecated_operations: []

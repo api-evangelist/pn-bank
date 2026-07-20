@@ -1,0 +1,54 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/pn-bank-cds-banking-products-openapi.yml
+docs: https://consumerdatastandardsaustralia.github.io/standards/#http-headers
+summary: >-
+  Cross-cutting request/response semantics for P&N Bank's CDR Product Reference Data
+  API, following the DSB Consumer Data Standards. The public PRD surface is
+  read-only (GET), unauthenticated, and version-negotiated via headers.
+authentication:
+  style: none
+  note: Product Reference Data requires no API key or authorization (public CDR data).
+  see: authentication/pn-bank-authentication.yml
+versioning:
+  style: header
+  request_header: x-v
+  min_version_header: x-min-v
+  response_header: x-v
+  note: x-v is REQUIRED on every request; the response echoes the served version.
+idempotency:
+  supported: false
+  note: >-
+    The public surface is read-only (GET only); there are no state-changing
+    operations, so no idempotency-key contract applies. No Idempotency pointer emitted.
+pagination:
+  style: page-number
+  params: [page, page-size]
+  default_page_size: 25
+  max_page_size: 1000
+  response_fields:
+    meta: [totalRecords, totalPages]
+    links: [self, first, prev, next, last]
+  see: errors/pn-bank-problem-types.yml
+field_selection:
+  effective: >-
+    'effective' query param on listBankingProducts filters CURRENT / FUTURE / ALL
+    product records.
+  updated_since: >-
+    'updated-since' query param returns products with lastUpdated at/after the given
+    UTC timestamp.
+  filters: [brand, product-category]
+error_envelope:
+  schema: ResponseErrorListV2
+  media_type: application/json
+  see: errors/pn-bank-problem-types.yml
+rate_limit_signaling:
+  documented: false
+  note: >-
+    CDR data holders operate traffic thresholds under the Non-Functional Requirements,
+    but P&N Bank does not document rate-limit response headers for the PRD surface.
+tracing:
+  interaction_id_header: x-fapi-interaction-id
+  note: >-
+    The CDR standard defines x-fapi-interaction-id for request correlation; it is
+    optional on the unauthenticated PRD endpoints.

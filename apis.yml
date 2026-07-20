@@ -55,6 +55,38 @@ apis:
     Consumer Data Standards; no API key or authorization is required for product reference
     data.
 common:
+- type: VulnerabilityDisclosure
+  url: security/pn-bank-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/pn-bank-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/pn-bank-agentic-access.yml
+- type: Security
+  url: https://www.pnbank.com.au/.well-known/security.txt
+- type: SecurityTxt
+  url: well-known/pn-bank-security.txt
+- type: WellKnown
+  url: well-known/pn-bank-well-known.yml
+- type: Authentication
+  url: authentication/pn-bank-authentication.yml
+- type: Conventions
+  url: conventions/pn-bank-conventions.yml
+- type: ErrorCatalog
+  url: errors/pn-bank-problem-types.yml
+- type: Conformance
+  url: conformance/pn-bank-conformance.yml
+- type: Lifecycle
+  url: lifecycle/pn-bank-lifecycle.yml
+- type: DataModel
+  url: data-model/pn-bank-data-model.yml
+- type: MCPServer
+  url: mcp/pn-bank-mcp.yml
+- type: Overlay
+  url: overlays/pn-bank-cds-banking-products-overlay.yaml
+- type: LLMsTxt
+  url: llms/pn-bank-llms.txt
+- type: AgentSkill
+  url: skills/pn-bank-get-products.md
 - type: Website
   url: https://www.pnbank.com.au/
 - type: Documentation

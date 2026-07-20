@@ -1,0 +1,23 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/pn-bank-cds-banking-products-openapi.yml
+docs: https://www.pnbank.com.au/help-and-support/open-banking/pn-bank-products-api/
+summary:
+  types: [none]
+  api_key_in: []
+  oauth2_flows: []
+  note: >-
+    P&N Bank's public Product Reference Data (PRD) API is UNAUTHENTICATED: no API key,
+    token, or client credentials are required. The OpenAPI declares no
+    securitySchemes. This is by CDR design — product reference data is public.
+schemes: []
+authenticated_data_sharing:
+  applies_to: >-
+    Consumer data sharing beyond product reference data (accounts, balances,
+    transactions, direct debits, scheduled payments, payees).
+  model: CDR OAuth2 / OpenID Connect (FAPI 1.0 Advanced) authorization
+  access: >-
+    Restricted to accredited data recipients (ADRs) via the CDR Register; the data
+    holder authorization server and its discovery documents are not part of the
+    public PRD surface probed here.
+  reference: https://consumerdatastandardsaustralia.github.io/standards/#security-profile

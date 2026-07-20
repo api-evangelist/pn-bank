@@ -1,0 +1,30 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for P&N Bank CDR Product Reference Data API
+  version: 1.0.0
+extends: openapi/pn-bank-cds-banking-products-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: pn-bank
+    x-apievangelist-notes: >-
+      P&N Bank publicly exposes ONLY the unauthenticated Product Reference Data
+      endpoints (/banking/products and /banking/products/{productId}). The remaining
+      CDR Banking operations in this standard spec require CDR OAuth2/OIDC FAPI
+      authorization and accredited data recipient status; they are not part of the
+      public surface.
+- target: $.servers
+  update:
+  - url: https://public.cdr-api.pnbank.com.au/cds-au/v1
+    description: >-
+      P&N Bank live public CDR Product Reference Data base URL (replaces the DSB
+      placeholder mtls.dh.example.com host). Confirmed HTTP 200 with x-v:5 on
+      2026-07-20.
+- target: $.paths['/banking/products'].get
+  update:
+    x-apievangelist-public: true
+    x-apievangelist-verified: '2026-07-20'
+- target: $.paths['/banking/products/{productId}'].get
+  update:
+    x-apievangelist-public: true
+    x-apievangelist-verified: '2026-07-20'

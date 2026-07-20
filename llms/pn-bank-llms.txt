@@ -1,0 +1,33 @@
+# P&N Bank
+
+> P&N Bank is the retail banking brand of Police & Nurses Limited (ABN 69 087 651 876, AFSL/ACL 240701), a customer-owned (mutual) bank headquartered in Perth and one of Western Australia's largest locally based banks. As an Authorised Deposit-taking Institution it participates in Australia's Consumer Data Right (CDR / Open Banking), exposing a public, unauthenticated Product Reference Data (PRD) API built to the DSB Consumer Data Standards.
+
+## APIs
+
+- [P&N Bank CDR Product Reference Data API](https://www.pnbank.com.au/help-and-support/open-banking/pn-bank-products-api/): Public, unauthenticated product catalogue. Base URL https://public.cdr-api.pnbank.com.au/cds-au/v1/banking/products. Requires the x-v header. Two operations: listBankingProducts and getBankingProductDetail.
+
+## Specs
+
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/pn-bank/refs/heads/main/openapi/pn-bank-cds-banking-products-openapi.yml): CDR Banking API 3.0.3 spec (v1.36.0)
+- [OpenAPI Overlay](https://raw.githubusercontent.com/api-evangelist/pn-bank/refs/heads/main/overlays/pn-bank-cds-banking-products-overlay.yaml): API Evangelist enhancements (real base URL, public-endpoint markers)
+
+## Artifacts
+
+- [Authentication](https://raw.githubusercontent.com/api-evangelist/pn-bank/refs/heads/main/authentication/pn-bank-authentication.yml): Unauthenticated PRD; CDR FAPI OAuth2/OIDC for accredited data sharing
+- [API Conventions](https://raw.githubusercontent.com/api-evangelist/pn-bank/refs/heads/main/conventions/pn-bank-conventions.yml): x-v header versioning, page/page-size pagination, CDR error envelope
+- [Error Catalog](https://raw.githubusercontent.com/api-evangelist/pn-bank/refs/heads/main/errors/pn-bank-problem-types.yml): CDR standard error URNs
+- [Data Model](https://raw.githubusercontent.com/api-evangelist/pn-bank/refs/heads/main/data-model/pn-bank-data-model.yml): BankingProduct entity graph
+- [Conformance](https://raw.githubusercontent.com/api-evangelist/pn-bank/refs/heads/main/conformance/pn-bank-conformance.yml): CDR Consumer Data Standards conformance
+- [Lifecycle](https://raw.githubusercontent.com/api-evangelist/pn-bank/refs/heads/main/lifecycle/pn-bank-lifecycle.yml): CDR header versioning + deprecation governance
+- [MCP (candidate)](https://raw.githubusercontent.com/api-evangelist/pn-bank/refs/heads/main/mcp/pn-bank-mcp.yml): Derived candidate MCP tools for the public PRD operations
+- [Agent Skill](https://raw.githubusercontent.com/api-evangelist/pn-bank/refs/heads/main/skills/pn-bank-get-products.md): Look up P&N Bank banking products
+- [Well-Known index](https://raw.githubusercontent.com/api-evangelist/pn-bank/refs/heads/main/well-known/pn-bank-well-known.yml)
+- [Domain Security](https://raw.githubusercontent.com/api-evangelist/pn-bank/refs/heads/main/security/pn-bank-domain-security.yml)
+- [Vulnerability Disclosure](https://raw.githubusercontent.com/api-evangelist/pn-bank/refs/heads/main/security/pn-bank-vulnerability-disclosure.yml)
+
+## Docs
+
+- [Open Banking at P&N Bank](https://www.pnbank.com.au/help-and-support/open-banking/)
+- [P&N Bank Products API](https://www.pnbank.com.au/help-and-support/open-banking/pn-bank-products-api/)
+- [Consumer Data Standards (DSB)](https://consumerdatastandardsaustralia.github.io/standards/)
+- [Website](https://www.pnbank.com.au/)

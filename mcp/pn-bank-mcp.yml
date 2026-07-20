@@ -1,0 +1,25 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: openapi/pn-bank-cds-banking-products-openapi.yml
+note: >-
+  No official P&N Bank MCP server was found. This is a CANDIDATE tool list derived
+  from the public, unauthenticated Product Reference Data operations only (the two
+  endpoints P&N Bank actually exposes publicly). The authenticated CDR data-sharing
+  operations in the spec are excluded because they require accredited data recipient
+  status and are not publicly callable.
+server:
+  name: pn-bank
+  transport: http
+  url: null
+tools:
+- name: list_banking_products
+  description: >-
+    List P&N Bank banking products (paginated). Supports effective (CURRENT/FUTURE/ALL),
+    updated-since, brand, and product-category filters. Requires the x-v header.
+  source_operation: openapi/pn-bank-cds-banking-products-openapi.yml#listBankingProducts
+- name: get_banking_product_detail
+  description: >-
+    Get full detail for a single product by productId (rates, fees, features,
+    constraints, eligibility, bundles). Requires the x-v header.
+  source_operation: openapi/pn-bank-cds-banking-products-openapi.yml#getBankingProductDetail
