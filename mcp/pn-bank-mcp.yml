@@ -4,10 +4,11 @@ status: candidate
 source: openapi/pn-bank-cds-banking-products-openapi.yml
 note: >-
   No official P&N Bank MCP server was found. This is a CANDIDATE tool list derived
-  from the public, unauthenticated Product Reference Data operations only (the two
-  endpoints P&N Bank actually exposes publicly). The authenticated CDR data-sharing
-  operations in the spec are excluded because they require accredited data recipient
-  status and are not publicly callable.
+  from the public, unauthenticated operations P&N Bank actually exposes: the two
+  Product Reference Data endpoints plus the two CDR Common Discovery endpoints
+  (status/outages), all confirmed HTTP 200 without authorization. The authenticated
+  CDR data-sharing operations in the spec are excluded because they require accredited
+  data recipient status and are not publicly callable.
 server:
   name: pn-bank
   transport: http
@@ -23,3 +24,14 @@ tools:
     Get full detail for a single product by productId (rates, fees, features,
     constraints, eligibility, bundles). Requires the x-v header.
   source_operation: openapi/pn-bank-cds-banking-products-openapi.yml#getBankingProductDetail
+- name: get_data_holder_status
+  description: >-
+    Get P&N Bank's CDR data-holder operational status (OK / PARTIAL_FAILURE /
+    UNAVAILABLE) with an updateTime. Public CDR Common Discovery endpoint; requires
+    the x-v header. Confirmed live 2026-07-21 (HTTP 200, status OK).
+  source_operation: https://public.cdr-api.pnbank.com.au/cds-au/v1/discovery/status#getStatus
+- name: get_data_holder_outages
+  description: >-
+    List P&N Bank's scheduled and current CDR outages. Public CDR Common Discovery
+    endpoint; requires the x-v header. Confirmed live 2026-07-21 (HTTP 200, empty list).
+  source_operation: https://public.cdr-api.pnbank.com.au/cds-au/v1/discovery/outages#getOutages

@@ -25,7 +25,7 @@ tags:
 - Customer Owned
 - Product Reference Data
 created: '2026-07-20'
-modified: '2026-07-21'
+modified: '2026-07-21T17:00:00Z'
 specificationVersion: '0.19'
 apis:
 - aid: pn-bank:pn-bank-cdr-product-reference-data-api
@@ -167,7 +167,38 @@ apis:
     FAPI flow over the bank's mutual-TLS (mTLS) gateway; they are not callable unauthenticated.
     Described by the shared DSB CDR Banking API OpenAPI (v1.36.0), not a bank-proprietary
     specification.
+- aid: pn-bank:pn-bank-cdr-common-discovery-api
+  name: P&N Bank CDR Common Discovery API
+  tags:
+  - CDR
+  - Open Banking
+  - Discovery
+  - Status
+  - Banking
+  - Australia
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.pnbank.com.au/help-and-support/open-banking/
+  baseURL: https://public.cdr-api.pnbank.com.au/cds-au/v1/discovery
+  properties:
+  - url: https://www.pnbank.com.au/help-and-support/open-banking/
+    type: Documentation
+  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-status
+    type: APIReference
+  - url: https://public.cdr-api.pnbank.com.au/cds-au/v1/discovery/status
+    type: StatusPage
+  - url: openapi/pn-bank-cds-banking-products-openapi.yml
+    type: OpenAPI
+  description: Public, unauthenticated Consumer Data Right (CDR) Common Discovery API
+    surface exposing P&N Bank's data-holder operational status. GET /discovery/status
+    returns the data holder's current availability (data.status OK/PARTIAL_FAILURE/UNAVAILABLE
+    with an updateTime) and GET /discovery/outages returns scheduled and current outages.
+    Confirmed live on 2026-07-21 returning HTTP 200 with x-v:1; status was OK and the
+    outages list was empty. Built to the DSB Consumer Data Standards; like Product
+    Reference Data these endpoints require no API key or authorization and are the
+    machine-readable status feed the CDR ecosystem uses to check a data holder.
 common:
+- type: StatusPage
+  url: https://public.cdr-api.pnbank.com.au/cds-au/v1/discovery/status
 - type: VulnerabilityDisclosure
   url: security/pn-bank-vulnerability-disclosure.yml
 - type: DomainSecurity

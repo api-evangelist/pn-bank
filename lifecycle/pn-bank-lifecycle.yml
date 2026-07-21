@@ -18,10 +18,23 @@ deprecation:
     governed centrally by the DSB Consumer Data Standards, not by a P&N Bank-specific
     policy. P&N Bank does not publish its own deprecation policy page.
   sunset_header: false
-status_page: null
+status_page: https://public.cdr-api.pnbank.com.au/cds-au/v1/discovery/status
 status_note: >-
-  No dedicated CDR API status/uptime page found. P&N Bank publishes a general
-  customer alerts/outages page at
-  https://www.pnbank.com.au/help-and-support/alerts-and-information/ (not an API
-  status page; no StatusPage pointer emitted).
+  P&N Bank exposes the CDR Common Discovery API publicly and unauthenticated, per
+  the DSB Consumer Data Standards. GET /cds-au/v1/discovery/status is a live,
+  machine-readable data-holder status surface — confirmed HTTP 200 on 2026-07-21
+  returning {"data":{"status":"OK","updateTime":"2026-07-21T16:33:13Z"}} with x-v:1.
+  GET /cds-au/v1/discovery/outages is the companion planned/current-outage feed
+  (HTTP 200, {"data":{"outages":[]}} — no outages at time of review). P&N Bank also
+  publishes a human customer alerts/outages page at
+  https://www.pnbank.com.au/help-and-support/alerts-and-information/.
+status_endpoints:
+- url: https://public.cdr-api.pnbank.com.au/cds-au/v1/discovery/status
+  operation: getStatus
+  status: 200
+  x_v: 1
+- url: https://public.cdr-api.pnbank.com.au/cds-au/v1/discovery/outages
+  operation: getOutages
+  status: 200
+  x_v: 1
 deprecated_operations: []
