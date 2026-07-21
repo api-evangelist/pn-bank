@@ -25,7 +25,7 @@ tags:
 - Customer Owned
 - Product Reference Data
 created: '2026-07-20'
-modified: '2026-07-20'
+modified: '2026-07-21'
 specificationVersion: '0.19'
 apis:
 - aid: pn-bank:pn-bank-cdr-product-reference-data-api
@@ -54,6 +54,119 @@ apis:
     header of 5 (meta.totalRecords 68 products at time of review). Built to the DSB
     Consumer Data Standards; no API key or authorization is required for product reference
     data.
+- aid: pn-bank:pn-bank-cdr-accounts-balances-api
+  name: P&N Bank CDR Accounts & Balances API
+  tags:
+  - CDR
+  - Open Banking
+  - Accounts
+  - Balances
+  - Banking
+  - Australia
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.pnbank.com.au/help-and-support/open-banking/
+  baseURL: https://public.cdr-api.pnbank.com.au/cds-au/v1/banking/accounts
+  properties:
+  - url: https://www.pnbank.com.au/help-and-support/open-banking/
+    type: Documentation
+  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-accounts
+    type: APIReference
+  - url: openapi/pn-bank-cds-banking-products-openapi.yml
+    type: OpenAPI
+  description: Consumer-authorized Consumer Data Right (CDR) Banking API surface covering
+    a member's accounts and balances. Implements the DSB Consumer Data Standards Banking
+    endpoints Get Accounts (GET /banking/accounts), Get Bulk Balances (GET /banking/accounts/balances),
+    Get Account Balance (GET /banking/accounts/{accountId}/balance), and Get Account
+    Detail (GET /banking/accounts/{accountId}). Unlike the public Product Reference
+    Data API, these endpoints return a consumer's own data and are only accessible to
+    an Accredited Data Recipient (ADR) after the customer authorizes sharing through
+    the CDR OAuth2/OIDC FAPI flow over the bank's mutual-TLS (mTLS) gateway; they are
+    not callable with a public/unauthenticated request. Described by the shared DSB
+    CDR Banking API OpenAPI (v1.36.0), not a bank-proprietary specification.
+- aid: pn-bank:pn-bank-cdr-transactions-api
+  name: P&N Bank CDR Transactions API
+  tags:
+  - CDR
+  - Open Banking
+  - Transactions
+  - Banking
+  - Australia
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.pnbank.com.au/help-and-support/open-banking/
+  baseURL: https://public.cdr-api.pnbank.com.au/cds-au/v1/banking/accounts
+  properties:
+  - url: https://www.pnbank.com.au/help-and-support/open-banking/
+    type: Documentation
+  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-transactions-for-account
+    type: APIReference
+  - url: openapi/pn-bank-cds-banking-products-openapi.yml
+    type: OpenAPI
+  description: Consumer-authorized Consumer Data Right (CDR) Banking API surface for
+    account transactions. Implements the DSB Consumer Data Standards Banking endpoints
+    Get Transactions For Account (GET /banking/accounts/{accountId}/transactions) and
+    Get Transaction Detail (GET /banking/accounts/{accountId}/transactions/{transactionId}),
+    returning a member's transaction history with optional filtering by date, amount,
+    and text. These endpoints expose a consumer's own data and are only accessible to
+    an Accredited Data Recipient (ADR) after the customer authorizes sharing through
+    the CDR OAuth2/OIDC FAPI flow over the bank's mutual-TLS (mTLS) gateway; they are
+    not callable unauthenticated. Described by the shared DSB CDR Banking API OpenAPI
+    (v1.36.0), not a bank-proprietary specification.
+- aid: pn-bank:pn-bank-cdr-direct-debits-scheduled-payments-api
+  name: P&N Bank CDR Direct Debits & Scheduled Payments API
+  tags:
+  - CDR
+  - Open Banking
+  - Direct Debits
+  - Scheduled Payments
+  - Banking
+  - Australia
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.pnbank.com.au/help-and-support/open-banking/
+  baseURL: https://public.cdr-api.pnbank.com.au/cds-au/v1/banking/accounts
+  properties:
+  - url: https://www.pnbank.com.au/help-and-support/open-banking/
+    type: Documentation
+  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-direct-debits-for-account
+    type: APIReference
+  - url: openapi/pn-bank-cds-banking-products-openapi.yml
+    type: OpenAPI
+  description: Consumer-authorized Consumer Data Right (CDR) Banking API surface for
+    direct debits and scheduled payments. Implements the DSB Consumer Data Standards
+    Banking endpoints Get Direct Debits For Account and Get Bulk Direct Debits (GET
+    /banking/accounts/{accountId}/direct-debits, GET /banking/accounts/direct-debits),
+    plus Get Scheduled Payments For Account and Get Bulk Scheduled Payments (GET /banking/accounts/{accountId}/payments/scheduled,
+    GET /banking/payments/scheduled). These endpoints return a consumer's own recurring
+    debit and scheduled payment arrangements and are only accessible to an Accredited
+    Data Recipient (ADR) after the customer authorizes sharing through the CDR OAuth2/OIDC
+    FAPI flow over the bank's mutual-TLS (mTLS) gateway. Described by the shared DSB
+    CDR Banking API OpenAPI (v1.36.0), not a bank-proprietary specification.
+- aid: pn-bank:pn-bank-cdr-payees-api
+  name: P&N Bank CDR Payees API
+  tags:
+  - CDR
+  - Open Banking
+  - Payees
+  - Banking
+  - Australia
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.pnbank.com.au/help-and-support/open-banking/
+  baseURL: https://public.cdr-api.pnbank.com.au/cds-au/v1/banking/payees
+  properties:
+  - url: https://www.pnbank.com.au/help-and-support/open-banking/
+    type: Documentation
+  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
+    type: APIReference
+  - url: openapi/pn-bank-cds-banking-products-openapi.yml
+    type: OpenAPI
+  description: Consumer-authorized Consumer Data Right (CDR) Banking API surface for
+    saved payees. Implements the DSB Consumer Data Standards Banking endpoints Get Payees
+    (GET /banking/payees) and Get Payee Detail (GET /banking/payees/{payeeId}), returning
+    a member's saved payee list and per-payee detail (domestic, international, or BPAY).
+    These endpoints expose a consumer's own data and are only accessible to an Accredited
+    Data Recipient (ADR) after the customer authorizes sharing through the CDR OAuth2/OIDC
+    FAPI flow over the bank's mutual-TLS (mTLS) gateway; they are not callable unauthenticated.
+    Described by the shared DSB CDR Banking API OpenAPI (v1.36.0), not a bank-proprietary
+    specification.
 common:
 - type: VulnerabilityDisclosure
   url: security/pn-bank-vulnerability-disclosure.yml
