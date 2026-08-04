@@ -1,0 +1,26 @@
+{
+  "provider": "pn-bank",
+  "sources": [
+    "pn-bank-banking-account-balances-api-openapi.yml",
+    "pn-bank-banking-account-direct-debits-api-openapi.yml",
+    "pn-bank-banking-account-scheduled-payments-api-openapi.yml",
+    "pn-bank-banking-account-transactions-api-openapi.yml",
+    "pn-bank-banking-accounts-api-openapi.yml",
+    "pn-bank-banking-payees-api-openapi.yml",
+    "pn-bank-banking-products-api-openapi.yml"
+  ],
+  "outputs": [
+    "pn-bank-banking-account-balances-api-openapi.yml",
+    "pn-bank-banking-account-direct-debits-api-openapi.yml",
+    "pn-bank-banking-account-scheduled-payments-api-openapi.yml",
+    "pn-bank-banking-account-transactions-api-openapi.yml",
+    "pn-bank-banking-accounts-api-openapi.yml",
+    "pn-bank-banking-payees-api-openapi.yml",
+    "pn-bank-banking-products-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
