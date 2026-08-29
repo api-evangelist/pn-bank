@@ -256,6 +256,9 @@ apis:
   - type: StatusPage
     url: https://public.cdr-api.pnbank.com.au/cds-au/v1/discovery/status
 common:
+- type: CapabilityMap
+  url: capabilities/pn-bank-capability-edges.yml
+  name: P&N Bank Business Capability Map
 - type: StatusPage
   url: https://public.cdr-api.pnbank.com.au/cds-au/v1/discovery/status
 - type: VulnerabilityDisclosure
