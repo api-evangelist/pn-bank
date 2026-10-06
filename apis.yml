@@ -58,7 +58,7 @@ tags_raw:
 - Customer Owned
 - Product Reference Data
 created: '2026-07-20'
-modified: '2026-07-21T17:00:00Z'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
 - aid: pn-bank:pn-bank-banking-account-balances-api
@@ -265,6 +265,8 @@ apis:
   - type: StatusPage
     url: https://public.cdr-api.pnbank.com.au/cds-au/v1/discovery/status
 common:
+- url: https://www.pnbank.com.au/blog/
+  type: Blog
 - type: CapabilityMap
   url: capabilities/pn-bank-capability-edges.yml
   name: P&N Bank Business Capability Map
